@@ -1,10 +1,10 @@
 <template>
   <div class="task-list-container">
-    <h1>Tujuan Dan Pencapaian</h1>
+    <h1>Laporan Kegiatan Hari Ini</h1>
     <input
       v-model="newTask"
       @keyup.enter="addTask"
-      placeholder="Tambah tujuan"
+      placeholder="Masukkan Laporan"
       class="task-input"
     />
     <button @click="addTask" class="add-button">Tambah</button>
@@ -28,7 +28,7 @@
       </li>
     </ul>
     <p class="incomplete-tasks-count">
-      Tujuan yang belum tercapai: {{ incompleteTasksCount }}
+      Jumlah Laporan Hari Ini: {{ incompleteTasksCount }}
     </p>
   </div>
 </template>
@@ -77,43 +77,52 @@ export default {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, #ad3030, #e0e0e0);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   font-family: "Arial", sans-serif;
 }
 
 /* Heading */
 .task-list-container h1 {
   text-align: center;
-  color: #333;
+  color: rgb(43, 36, 43);
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 /* Input untuk menambah tugas baru */
 .task-input {
-  width: calc(100% - 100px);
-  padding: 10px;
+  width: calc(100% - 120px);
+  padding: 12px;
   margin-right: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
   box-sizing: border-box;
   font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+.task-input:focus {
+  border-color: #a78528;
+  outline: none;
 }
 
 /* Tombol tambah */
 .add-button {
-  padding: 10px 20px;
-  background-color: #28a745;
+  padding: 12px 24px;
+  background-color: brown;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
   font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 .add-button:hover {
-  background-color: #218838;
+  background-color: #884a21;
 }
 
 /* Daftar tugas */
@@ -128,12 +137,17 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 10px;
   background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.05);
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.task-item:hover {
+  transform: scale(1.02);
 }
 
 /* Checkbox tugas */
@@ -151,21 +165,23 @@ export default {
 /* Tugas yang sudah selesai */
 .completed {
   text-decoration: line-through;
-  color: #777;
+  color: blue;
 }
 
 /* Tombol hapus */
 .delete-button {
-  padding: 5px 10px;
-  background-color: #dc3545;
+  padding: 6px 12px;
+  background-color: brown;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 8px;
   cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
 }
 
 .delete-button:hover {
-  background-color: #c82333;
+  background-color: #884a21;
 }
 
 /* Jumlah tugas yang belum selesai */
@@ -173,6 +189,6 @@ export default {
   text-align: center;
   margin-top: 20px;
   font-size: 18px;
-  color: #333;
+  color: rgb(43, 36, 43);
 }
 </style>
